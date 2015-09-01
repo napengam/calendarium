@@ -25,7 +25,7 @@
 function hgsCalendar() {
     'use strict';
     var
-            calendar = document.body.appendChild(document.createElement('div')),
+             calendar = document.body.appendChild(document.createElement('div')),
             backEnd = '../php/calendarBackend.php',
             callPHP = new myBackend(),
             gtarget;
@@ -70,6 +70,8 @@ function hgsCalendar() {
     function readResponse(recPkg)
     {
         var obj, alist, absOffset = {};
+
+        
 
         calendar.style.position = 'absolute';
         calendar.style.display = 'block';
