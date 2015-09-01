@@ -1,0 +1,11 @@
+.hgsacc {
+    cursor:pointer;
+    color:green;
+    font-weight:bold;
+    text-align:center;
+}        
+.hgspcc {
+    cursor:pointer;
+    color:lightblue;
+    text-align:center;
+}
