@@ -70,9 +70,7 @@ function hgsCalendar() {
     function readResponse(recPkg)
     {
         var obj, alist, absOffset = {};
-
-        
-
+     
         calendar.style.position = 'absolute';
         calendar.style.display = 'block';
         calendar.innerHTML = recPkg.result; // render calendar
