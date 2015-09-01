@@ -27,7 +27,7 @@ Example at <a href="http://hgsweb.de/calendarium/html">http://hgsweb.de/calendar
         </script>
 
 We are adding an anonymous  function to the window onload event, that gives us a pointer to the
-calendar funtionality in calendarium.js
-The code in myBackend.js is used inside calendarium.js to manage the trafic to and 
-from the backend script calendarBackend.php that actually constructs the HTNL for 
-the calenar to show up on the cleint side. 
+calendar funtionality in js/calendarium.js
+The code in js/myBackend.js is used inside calendarium.js to manage the trafic to and 
+from the backend script php/calendarBackend.php that actually constructs the HTML for 
+the calendar to show up on the client side. 
