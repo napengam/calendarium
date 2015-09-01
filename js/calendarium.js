@@ -141,4 +141,3 @@ function hgsCalendar() {
         backEnd: setBackEnd // path to php script to emit calendar
     };
 }
-var HGS_CALENDAR = hgsCalendar();
