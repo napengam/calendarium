@@ -4,7 +4,7 @@ Example at <a href="http://hgsweb.de/calendarium/html">http://hgsweb.de/calendar
 
 <h2>Usage</h2>
     
-<u>have a look at the core of the HTML/index.html for the demo</u>
+Have a look at the core of the HTML/index.html for the demo
 
 ```javascript
         <script src="../js/calendarium.js"></script>
@@ -43,3 +43,31 @@ function is called. This way we can access the actual <i>id</i> of the field tha
 receive the date we pick from our calendar and pass this id on into 
 <i>calendar.fetchCalendar</i>.
 
+<h2>Inside calendar.fetchCalendar()</h2>
+
+ calling our php back end 
+
+```javascript
+        jsonPost = {
+            'y': y,
+            'm': m,
+            'target': target
+        };
+        callPHP.callDirect(backEnd, jsonPost, readResponse);
+```
+
+We just send the year and month we wnat to see a calendar, and the id of our target
+that will receive the date that we will eventualy select from the calendar.
+
+<h2>Inside our php backe end </h2>
+
+constructing the HTML for the calendar and 
+sending it back to the client.
+
+<h2>Back inside calendar.js in readResponse(recPkg)</h2>
+    
+Here the calendar will be placed into a div
+
+    calendar.innerHTML = recPkg.result;
+
+and will be positioned below the input field with the id===target
