@@ -5,7 +5,7 @@ Example at <a href="http://hgsweb.de/calendarium/html">http://hgsweb.de/calendar
 <h2>Usage</h2>
     
     have a look at the core of the HTML fo the demo:
-<pre>
+<pre><code>
         <script src="../js/calendarium.js"></script>
         <script src="../js/myBackend.js"></script>
         <script>
@@ -25,7 +25,7 @@ Example at <a href="http://hgsweb.de/calendarium/html">http://hgsweb.de/calendar
                 calendar = hgsCalendar();
             });
         </script>
-</pre>
+</code></pre>
 We are adding a fucntion to window onload event that gives us a pointer to the
 calendar funtionality in calendarium.js
 The code in myBackend.js is used inside calendarium.js to manage the trafic to and 
