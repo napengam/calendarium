@@ -4,7 +4,7 @@ Example at <a href="http://hgsweb.de/calendarium/html">http://hgsweb.de/calendar
 
 <h2>Usage</h2>
     
-have a look at the core of the HTML/index.html for the demo
+<u>have a look at the core of the HTML/index.html for the demo</u>
 
 ```javascript
         <script src="../js/calendarium.js"></script>
@@ -34,12 +34,12 @@ from the backend script php/calendarBackend.php that actually constructs the HTM
 the calendar to show up on the client side. 
 
 Next we find an input field like:
-
     
         <input type="text" name="i1" id="ii1" size="10" value="1.12.2015" onclick='cal(this);'>
     
 When we click into this input field, the onclick function <i>cal</i> will be called with
 <i>this</i> as a parameter that at runtime will point to the input field from wich the
-function is called. This way we can access the actual <i>id</i> of teh field that will
-receive the date we pick from our calendar.  
+function is called. This way we can access the actual <i>id</i> of the field that will
+receive the date we pick from our calendar and pass this id on into 
+<i>calendar.fetchCalendar</i>.
 
