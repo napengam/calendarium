@@ -35,9 +35,9 @@ the calendar to show up on the client side.
 
 Next we find an input field like:
 
-    ```html
+    
         <input type="text" name="i1" id="ii1" size="10" value="1.12.2015" onclick='cal(this);'>
-    ```
+    
 When we click into this input field, the onclick function <i>cal</i> will be called with
 <i>this</i> as a parameter that at runtime will point to the input field from wich the
 function is called. This way we can access the actual <i>id</i> of teh field that will
