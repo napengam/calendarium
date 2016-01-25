@@ -25,12 +25,14 @@
 function hgsCalendar() {
     'use strict';
     var
-            calendar = document.body.appendChild(document.createElement('div')),
+            calendar = null,
             backEnd = '../php/calendarBackend.php',
-            callPHP = new myBackend(),
+            callPHP = null,
             gtarget;
 
     //////////////////////
+
+
 
     function gebi(id) {
         return document.getElementById(id);
@@ -58,6 +60,9 @@ function hgsCalendar() {
             'm': m,
             'target': target
         };
+        if(callPHP===null){
+            callPHP = new myBackend();
+        }
         callPHP.callDirect(backEnd, jsonPost, readResponse);
         return false;
     }
@@ -71,6 +76,9 @@ function hgsCalendar() {
     {
         var obj, alist, absOffset = {};
      
+        if(calendar===null){
+            calendar=document.body.appendChild(document.createElement('div'));      
+        }
         calendar.style.position = 'absolute';
         calendar.style.display = 'block';
         calendar.innerHTML = recPkg.result; // render calendar
