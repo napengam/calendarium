@@ -2,7 +2,7 @@
  * ************************************************************************
  calendarium 2.0 Copyright (c) 2012-2015 Heinrich Schweitzer
  Contact me at hgs@hgsweb.de
-  
+ 
  Permission is hereby granted, free of charge, to any person obtaining
  a copy of this software and associated documentation files (the
  'Software'), to deal in the Software without restriction, including
@@ -11,7 +11,7 @@
  permit persons to whom the Software is furnished to do so, subject to
  the following conditions:
  
-
+ 
  THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
  EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
  MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -60,7 +60,7 @@ function hgsCalendar() {
             'm': m,
             'target': target
         };
-        if(callPHP===null){
+        if (callPHP === null) {
             callPHP = new myBackend();
         }
         callPHP.callDirect(backEnd, jsonPost, readResponse);
@@ -75,9 +75,9 @@ function hgsCalendar() {
     function readResponse(recPkg)
     {
         var obj, alist, absOffset = {};
-     
-        if(calendar===null){
-            calendar=document.body.appendChild(document.createElement('div'));      
+
+        if (calendar === null) {
+            calendar = document.body.appendChild(document.createElement('div'));
         }
         calendar.style.position = 'absolute';
         calendar.style.display = 'block';

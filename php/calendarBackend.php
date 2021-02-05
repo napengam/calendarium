@@ -13,7 +13,7 @@ function normDate($da) {
 
 function make_calendar($m, $y, $target) {
     /*
-     * fornumber of days, months
+     * for number of days, months
      */
     $days_per_month = Array(0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
     $month = Array('', 'Januar', 'Februar', 'M&auml;rz', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember');
@@ -123,4 +123,3 @@ $m = $json['m'];
 $target = $json['target'];
 $json['result'] = make_calendar($m, $y, $target);
 echo json_encode($json);
-?>
