@@ -1,14 +1,13 @@
 <?php
 
-function normDate($da) {
-    $arr = explode('.', $da);
-    if (strlen($arr[0]) < 2) {
-        $arr[0] = '0' . $arr[0];
-    }
-    if (strlen($arr[1]) < 2) {
-        $arr[1] = '0' . $arr[1];
-    }
-    return $arr[0] . '.' . $arr[1] . '.' . $arr[2];
+function normDate($d, $m, $y) {
+    // german date
+    return sprintf('%02s', $d) . '.' . sprintf('%02s', $m) . '.' . sprintf('%02s', $y);
+//    // usa date
+//    return sprintf('%02s', $m) . '/' . sprintf('%02s', $d) . '/' . sprintf('%02s', $y);
+//   // mysql date
+//    return sprintf('%02s', $y) . '-' . sprintf('%02s', $m) . '-' . sprintf('%02s', $d);
+//   
 }
 
 function make_calendar($m, $y, $target) {
@@ -55,16 +54,19 @@ function make_calendar($m, $y, $target) {
     /*
      * here comes the header 
      */
-    $calendar = "<table id=hgs_calendar style=\"background:white;font-size:0.8em;border: 1px solid black\">"
-            . "<tr style=\"background:silver\">"
-            . "<th>$onclp</th>"
-            . "<th colspan=4 align=center>" . $month[$dstring[2]] . " $y</th>"
-            . "<th>$oncln</th>"
-            . "<th style=\"cursor:pointer;color:white;background:darkred;\" title=close><b id=close>X</th>"
-            . "</tr>"
-            . "<tr>"
-            . "<th>Mo</th><th>Di</th><th>Mi</th><th>Do</th><th>Fr</th><th>Sa</th><th>So</th>"
-            . "</tr>";
+    $calendar = [];
+    $calendar[] = implode('',
+            ["<table id=hgs_calendar style=\"background:white;font-size:0.8em;border: 1px solid black\">"
+                , "<tr style=\"background:silver\">"
+                , "<th>$onclp</th>"
+                , "<th colspan=4 align=center>" . $month[$dstring[2]] . " $y</th>"
+                , "<th>$oncln</th>"
+                , "<th style=\"cursor:pointer;color:white;background:darkred;\" title=close><b id=close>X</th>"
+                , "</tr>"
+                , "<tr>"
+                , "<th>Mo</th><th>Di</th><th>Mi</th><th>Do</th><th>Fr</th><th>Sa</th><th>So</th>"
+                , "</tr>"
+    ]);
     /*
      * dw= Numeric representation of the day of the week
      *  0 (for Sunday) through 6 (for Saturday)
@@ -77,10 +79,10 @@ function make_calendar($m, $y, $target) {
      * leading days from previous month;
      */
     $npm = $days_per_month[$mp] - $dw + 2;
-    $calendar.="<tr>";
+    $calendar[] = "<tr>";
     for ($j = 1; $j < $dw; $j++) {
-        $d = normDate("$npm.$mp.$yp");
-        $calendar.="<td data-thedate=" . $d . " class=hgspcc>" . ($npm++) . "</td>";
+        $d = normDate($npm, $mp, $yp);
+        $d = $calendar[] = "<td data-thedate=" . $d . " class=hgspcc>" . ($npm++) . "</td>";
     }
     /*
      * now comes the current month;
@@ -89,27 +91,27 @@ function make_calendar($m, $y, $target) {
     $br = $j;
     for ($j = 0; $j < $n; $j++) {
         $jj = $j + 1;
-        $d = normDate("$jj.$m.$y");
-        $calendar.="<td data-thedate=" . $d . " class=hgsacc >" . ($j + 1) . "</td>";
+        $d = normDate($jj, $m, $y);
+        $calendar[] = "<td data-thedate=" . $d . " class=hgsacc >" . ($j + 1) . "</td>";
         $br++;
         $br = $br % 7;
         if ($br == 1) {
-            $calendar.="</tr><tr>";
+            $calendar[] = "</tr><tr>";
         }
     }
     /*
      *  trailing days into next month
      */
     for ($i = 1; $br > 1 && $br < 8; $br++) {
-        $d = normDate("$i.$mn.$yn");
-        $calendar.="<td data-thedate=" . $d . "  class=hgspcc>" . ($i++) . "</td>";
+        $d = normDate($i, $mn, $yn);
+        $calendar[] = "<td data-thedate=" . $d . "  class=hgspcc>" . ($i++) . "</td>";
     }
     /*
      * close calendar table
      */
-    $calendar.='</tr></table>';
+    $calendar[] = '</tr></table>';
 
-    return $calendar;
+    return implode('', $calendar);
 }
 
 ///////////////////////////////////////
@@ -117,7 +119,7 @@ function make_calendar($m, $y, $target) {
 ///////////////////////////////////////
 
 
-$json = json_decode( file_get_contents('php://input'), true);
+$json = json_decode(file_get_contents('php://input'), true);
 $y = $json['y'];
 $m = $json['m'];
 $target = $json['target'];
