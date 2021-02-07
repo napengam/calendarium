@@ -10,19 +10,11 @@ Have a look at the core of the HTML/index.html for the demo
         <script src="../js/calendarium.js"></script>
         <script src="../js/myBackend.js"></script>
         <script>
-            function addEvent(obj, ev, fu) {
-                if (obj.addEventListener) {
-                    obj.addEventListener(ev, fu, false);
-                } else {
-                    var eev = "on" + ev;
-                    obj.attachEvent(eev, fu);
-                }
-            }
             function cal(t) {
-                calendar.closeCalendar();
-                calendar.fetchCalendar(0, 0, t.id);
-            }
-            addEvent(window, 'load', function () {
+                    calendar.closeCalendar();
+                    calendar.fetchCalendar(0, 0, t.id);
+                }
+            window.addEventListener('load', function () {
                 calendar = hgsCalendar();
             });
         </script>
